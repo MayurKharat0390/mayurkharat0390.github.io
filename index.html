@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Developer Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <style>
+        /* Remove custom cursor styles */
+        /* .custom-cursor {
+            width: 20px;
+            height: 20px;
+            background: rgba(79, 70, 229, 0.3);
+            border: 2px solid #4f46e5;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s;
+        } */
+
+        /* Essential styles for proper display */
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .portfolio-content {
+            display: block !important;
+            opacity: 1 !important;
+            transform: none !important;
+            position: relative;
+            z-index: 1;
+        }
+
+        .visiting-card-section {
+            display: none !important;
+        }
+
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: white;
+        }
+
+        .logo-hex {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: #4f46e5;
+        }
+
+        .nav-links a i {
+            margin-right: 0.5rem;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Tooltip styles */
+        .tooltip {
+            position: relative;
+        }
+
+        .tooltip::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 0.5rem;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .tooltip:hover::before {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(-5px);
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(17, 24, 39, 0.95);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 0.75rem 1rem;
+                color: white;
+            }
+        }
+
+        /* Performance optimizations */
+        .portfolio-content {
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+            will-change: transform, opacity;
+        }
+
+        /* Hardware acceleration for animations */
+        .card-3d, .skill-card, .project-card {
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            perspective: 1000px;
+        }
+
+        /* Profile Image Styles */
+        .profile-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            position: relative;
+        }
+
+        .profile-frame {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #4f46e5;
+            box-shadow: 0 0 20px rgba(79, 70, 229, 0.3);
+            position: relative;
+            background: transparent;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Remove the violet gradient background */
+        /* .profile-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #4f46e5, #7c3aed);
+            z-index: 1;
+        } */
+
+        .profile-img.loaded {
+            z-index: 2;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <!-- Portfolio Content -->
+    <div class="portfolio-content" style="display: block; opacity: 1;">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-content">
+                <div class="logo">
+                    <div class="logo-hex">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <span class="text-gradient">Frontend Dev</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#about" class="tooltip" data-tooltip="About Me"><i class="fas fa-user"></i> About</a></li>
+                    <li><a href="#skills" class="tooltip" data-tooltip="My Skills"><i class="fas fa-laptop-code"></i> Skills</a></li>
+                    <li><a href="#experience" class="tooltip" data-tooltip="Experience"><i class="fas fa-briefcase"></i> Experience</a></li>
+                    <li><a href="#projects" class="tooltip" data-tooltip="Projects"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                    <li><a href="#contact" class="tooltip" data-tooltip="Contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+                <div class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div id="particles-js" class="particles-container"></div>
+            <div class="bg-pattern"></div>
+            <div class="hero-content" data-aos="fade-up">
+                <div class="profile-container"style="margin-top: 50px;">
+                    <div class="profile-frame">
+                        <img src="profile-photo.jpg" alt="Your Profile Photo" class="profile-img">
+                    </div>
+                </div>
+                <h1 class="text-gradient text-shadow">Hi, I'm <span class="highlight">Mayur Kharat</span></h1>
+                <h2 class="text-glow">Turning Ideas into Digital Reality</h2>
+                <div class="terminal">
+                    <div class="terminal-content">
+                        <div class="terminal-line">
+                            <span class="terminal-prompt">$</span>
+                            <span class="terminal-command">whoami</span>
+                        </div>
+                        <div class="terminal-line">
+                            <span class="terminal-output">A passionate developer who loves creating meaningful experiences</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn primary">
+                        <i class="fas fa-paper-plane"></i> Let's Connect
+                    </a>
+                    <a href="#projects" class="btn secondary">
+                        <i class="fas fa-code-branch"></i> Explore My Work
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="bg-grid"></div>
+            <h2 class="section-title text-gradient" data-aos="fade-up">About Me</h2>
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <div class="code-block">
+                        <span class="code-keyword">const</span> <span class="code-function">developer</span> = {
+                        <br>&nbsp;&nbsp;<span class="code-string">name</span>: <span class="code-string">'Mayur Kharat'</span>,
+                        <br>&nbsp;&nbsp;<span class="code-string">role</span>: <span class="code-string">'Frontend Developer'</span>,
+                        <br>&nbsp;&nbsp;<span class="code-string">passion</span>: <span class="code-string">'Creating beautiful UIs'</span>
+                        <br>};
+                    </div>
+                    <p>I am a passionate frontend developer with a keen eye for design and a love for clean code. I specialize in creating responsive, user-friendly web applications using modern technologies.</p>
+                </div>
+                <div class="about-stats" data-aos="fade-left">
+                    <div class="stat-item card-3d">
+                        <div class="card-3d-inner">
+                            <div class="progress-circle" style="--progress: 75%">
+                                <div class="progress-circle-inner">
+                                    <span class="counter">10+</span>
+                                </div>
+                            </div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                    </div>
+                    <div class="stat-item card-3d">
+                        <div class="card-3d-inner">
+                            <div class="progress-circle" style="--progress: 60%">
+                                <div class="progress-circle-inner">
+                                    <span>1</span>
+                                </div>
+                            </div>
+                            <div class="stat-label">Internship</div>
+                        </div>
+                    </div>
+                    <div class="stat-item card-3d">
+                        <div class="card-3d-inner">
+                            <div class="progress-circle" style="--progress: 90%">
+                                <div class="progress-circle-inner">
+                                    <span>5+</span>
+                                </div>
+                            </div>
+                            <div class="stat-label">Technologies</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <h2 class="section-title text-gradient" data-aos="fade-up">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card card-3d" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="card-3d-inner">
+                        <i class="fab fa-html5"></i>
+                        <h3>HTML5</h3>
+                        <div class="skill-progress">
+                            <div class="progress-bar" style="width: 95%"></div>
+                        </div>
+                        <span class="badge badge-primary">Expert</span>
+                    </div>
+                </div>
+                <div class="skill-card card-3d" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="card-3d-inner">
+                        <i class="fab fa-css3-alt"></i>
+                        <h3>CSS3</h3>
+                        <div class="skill-progress">
+                            <div class="progress-bar" style="width: 90%"></div>
+                        </div>
+                        <span class="badge badge-success">Advanced</span>
+                    </div>
+                </div>
+                <div class="skill-card card-3d" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="card-3d-inner">
+                        <i class="fab fa-js"></i>
+                        <h3>JS</h3>
+                        <div class="skill-progress">
+                            <div class="progress-bar" style="width: 85%"></div>
+                        </div>
+                        <span class="badge badge-warning">Intermediate</span>
+                    </div>
+                </div>
+                <div class="skill-card card-3d" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="card-3d-inner">
+                        <i class="fab fa-python"></i>
+                        <h3>Django</h3>
+                        <div class="skill-progress">
+                            <div class="progress-bar" style="width: 80%"></div>
+                        </div>
+                        <span class="badge badge-accent">Intermediate</span>
+                    </div>
+                </div>
+                <div class="skill-card card-3d" data-aos="zoom-in" data-aos-delay="500">
+                    <div class="card-3d-inner">
+                        <i class="fas fa-database"></i>
+                        <h3>MySQL</h3>
+                        <div class="skill-progress">
+                            <div class="progress-bar" style="width: 85%"></div>
+                        </div>
+                        <span class="badge badge-success">Advanced</span>
+                    </div>
+                </div>
+                <div class="skill-card card-3d" data-aos="zoom-in" data-aos-delay="600">
+                    <div class="card-3d-inner">
+                        <i class="fab fa-css3-alt"></i>
+                        <h3>Tailwind CSS</h3>
+                        <div class="skill-progress">
+                            <div class="progress-bar" style="width: 90%"></div>
+                        </div>
+                        <span class="badge badge-primary">Expert</span>
+                    </div>
+                </div>
+                <div class="skill-card card-3d" data-aos="zoom-in" data-aos-delay="700">
+                    <div class="card-3d-inner">
+                        <i class="fab fa-php"></i>
+                        <h3>PHP</h3>
+                        <div class="skill-progress">
+                            <div class="progress-bar" style="width: 75%"></div>
+                        </div>
+                        <span class="badge badge-warning">Intermediate</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="experience">
+            <h2 class="section-title text-gradient" data-aos="fade-up">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item left" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <h3>Internship - Government Polytechnic Nashik</h3>
+                        <p class="experience-date">January 2025 - April 2025</p>
+                        <p class="experience-description">
+                           Web Development Intern
+
+During my internship at Government Polytechnic, Nashik, I had the opportunity to work on various government projects, contributing as a web development intern. My role primarily involved designing and developing web-based solutions using Django as the backend framework and HTML, CSS, and Bootstrap for responsive front-end development.
+
+I gained hands-on experience in creating user-friendly interfaces, building secure and scalable applications, and working with real-world data to solve practical problems. This internship not only strengthened my technical skills in full-stack development but also gave me exposure to working on live government initiatives, enhancing my problem-solving abilities and understanding of collaborative project environments.
+
+</p>
+                        
+                        <div class="badge badge-primary">Web Development</div>
+                        <div class="badge badge-success">Frontend</div>
+                        <div class="badge badge-primary">Django</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects">
+            <h2 class="section-title text-gradient" data-aos="fade-up">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card card-3d" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-3d-inner">
+                        <div class="project-image">
+                            <img src="image.png" alt="Project 1">
+                        </div>
+                        <div class="project-info">
+                            <h3>Modern Teaching Platform with Gamification</h3>
+                            <p>A responsive teaching platform that contains gamification to attract students</p>
+                            <div class="project-tech">
+                                <span class="badge badge-primary">Django</span>
+                                <span class="badge badge-success">Javascript</span>
+                                <span class="badge badge-warning">Bootstrap</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn small primary"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="#" class="btn small secondary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card card-3d" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-3d-inner">
+                        <div class="project-image">
+                            <img src="https://via.placeholder.com/300x200" alt="Project 2">
+                        </div>
+                        <div class="project-info">
+                            <h3>Task Management App</h3>
+                            <p>A responsive task management application with real-time updates.</p>
+                            <div class="project-tech">
+                                <span class="badge badge-primary">JavaScript</span>
+                                <span class="badge badge-success">HTML</span>
+                                <span class="badge badge-warning">CSS</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="btn small primary"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="#" class="btn small secondary"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <h2 class="section-title text-gradient" data-aos="fade-up">Contact Me</h2>
+            <div class="contact-content">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="contact-item card-3d">
+                        <div class="card-3d-inner">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h3>Email</h3>
+                                <p>your.email@example.com</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-item card-3d">
+                        <div class="card-3d-inner">
+                            <i class="fab fa-github"></i>
+                            <div>
+                                <h3>GitHub</h3>
+                                <p>github.com/yourusername</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-item card-3d">
+                        <div class="card-3d-inner">
+                            <i class="fab fa-linkedin"></i>
+                            <div>
+                                <h3>LinkedIn</h3>
+                                <p>linkedin.com/in/yourusername</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form card-3d" data-aos="fade-left">
+                    <div class="card-3d-inner">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" placeholder="Enter your message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn primary">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Developer Tools -->
+        <div class="dev-tools">
+            <button class="dev-tool-btn tooltip" data-tooltip="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="dev-tool-btn tooltip" data-tooltip="View Source">
+                <i class="fas fa-code"></i>
+            </button>
+            <button class="dev-tool-btn tooltip" data-tooltip="Toggle Console">
+                <i class="fas fa-terminal"></i>
+            </button>
+        </div>
+
+        <!-- Notification -->
+        <div class="notification" id="notification">
+            <i class="notification-icon"></i>
+            <span class="notification-message"></span>
+        </div>
+
+        <footer>
+            <div class="footer-content">
+                <p>&copy; 2024 Frontend Developer Portfolio. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize AOS
+            AOS.init({
+                duration: 800,
+                easing: 'ease-in-out',
+                once: true
+            });
+
+            // Initialize Particles.js immediately
+            function initParticles() {
+                if (typeof particlesJS !== 'undefined') {
+                    particlesJS('particles-js', {
+                        particles: {
+                            number: { value: 40, density: { enable: true, value_area: 800 } },
+                            color: { value: '#4f46e5' },
+                            shape: { type: 'circle' },
+                            opacity: { value: 0.3, random: false },
+                            size: { value: 2, random: true },
+                            line_linked: {
+                                enable: true,
+                                distance: 150,
+                                color: '#4f46e5',
+                                opacity: 0.2,
+                                width: 1
+                            },
+                            move: {
+                                enable: true,
+                                speed: 3,
+                                direction: 'none',
+                                random: false,
+                                straight: false,
+                                out_mode: 'out',
+                                bounce: false
+                            }
+                        },
+                        interactivity: {
+                            detect_on: 'canvas',
+                            events: {
+                                onhover: { enable: false },
+                                onclick: { enable: false },
+                                resize: true
+                            }
+                        },
+                        retina_detect: true
+                    });
+                }
+            }
+
+            // Initialize particles immediately
+            initParticles();
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const navLinks = document.querySelector('.nav-links');
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
+
+            // Smooth scrolling
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Form Submission
+            const contactForm = document.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    showNotification('Message sent successfully!', 'success');
+                    this.reset();
+                });
+            }
+
+            // Add image load handler
+            const profileImg = document.querySelector('.profile-img');
+            if (profileImg) {
+                profileImg.addEventListener('load', function() {
+                    this.classList.add('loaded');
+                });
+                
+                // Add error handler
+                profileImg.addEventListener('error', function() {
+                    console.error('Profile image failed to load');
+                    this.style.display = 'none';
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
