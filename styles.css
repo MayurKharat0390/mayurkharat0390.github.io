@@ -118,7 +118,8 @@ a {
 
 /* Hero Epicness */
 .hero-v2 {
-    height: 100vh;
+    min-height: 100vh;
+    padding: 120px 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -129,11 +130,77 @@ a {
 .availability-badge {
     background: var(--card-bg);
     border: 1px solid var(--border);
-    padding: 10px 24px;
+    padding: 14px 32px;
     border-radius: 100px;
-    font-size: 13px;
-    margin-bottom: 40px;
-    backdrop-filter: blur(5px);
+    font-size: 14px;
+    margin-bottom: 50px;
+    backdrop-filter: blur(15px);
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    z-index: 100;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.pulse-dot {
+    width: 12px;
+    height: 12px;
+    background: #10b981;
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 10px #10b981;
+}
+
+.pulse-dot::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border: 2px solid #10b981;
+    border-radius: 50%;
+    animation: beacon 2s ease-out infinite;
+}
+
+@keyframes beacon {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: scale(3.5);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(.7);
+        opacity: 1;
+    }
+
+    80%,
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(.7);
+        opacity: 1;
+    }
+
+    80%,
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
 }
 
 .hero-v2 h1 {
@@ -281,16 +348,125 @@ body.light-mode .btn-primary:hover {
 }
 
 .tech-pill {
-    padding: 10px 20px;
-    border-radius: 12px;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    color: #111;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+}
+
+.tech-pill:hover {
+    transform: translateY(-3px);
+}
+
+.tech-python {
+    background: #fdfae5;
+    border-color: #f2eab7;
+}
+
+.tech-js {
+    background: #fffbe6;
+    border-color: #f7e7a3;
+}
+
+.tech-three {
+    background: #f3f3f3;
+    border-color: #e5e5e5;
+}
+
+.tech-supabase {
+    background: #ecfdf5;
+    border-color: #a7f3d0;
+}
+
+.tech-react {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+}
+
+.tech-tailwind {
+    background: #ecfeff;
+    border-color: #a5f3fc;
 }
 
 .project-desc {
-    font-size: 20px;
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--fg-dim);
+    margin-bottom: 40px;
     font-weight: 300;
+}
+
+.btn-project {
+    background: var(--fg);
+    color: var(--bg);
+    padding: 16px 40px;
+    border-radius: 100px;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+}
+
+.btn-project:nth-child(2) {
+    background: var(--glass);
+    color: var(--fg);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+    box-shadow: none;
+}
+
+.btn-project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.15);
+    filter: brightness(1.1);
+}
+
+.btn-project:nth-child(2):hover {
+    background: var(--fg);
+    color: var(--bg);
+    border-color: transparent;
+}
+
+/* Section Spacing */
+.section-v2 {
+    padding: 100px 0;
+}
+
+/* Footer & Refinements */
+.footer-v2 {
+    padding: 120px 0 60px;
+}
+
+.footer-content {
+    border-top: 1px solid var(--border);
+    padding-top: 60px;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 30px;
+    }
+
+    .project-v2 {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .experience-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Section Spacing */
