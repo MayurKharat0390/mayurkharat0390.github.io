@@ -310,6 +310,29 @@ body.light-mode .btn-primary:hover {
     padding: 60px;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
+    min-height: 400px;
+    /* Ensure stability during transitions */
+}
+
+.exp-content {
+    display: none;
+}
+
+.exp-content.active {
+    display: block;
+    animation: expFadeIn 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes expFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Project Masterpieces */

@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap"
         rel="stylesheet">
 </head>
@@ -45,10 +46,10 @@
             <div class="hero-subtitle">
                 <p><strong>Aspiring Software Developer</strong> from Pune, Maharashtra.</p>
                 <p class="specialist">
-                    <i class="fab fa-python" style="color: #3776ab;"></i> Django //
-                    <i class="fab fa-js" style="color: #f7df1e;"></i> JavaScript //
-                    <i class="fas fa-cube" style="color: #00ffcc;"></i> Three.js //
-                    <i class="fab fa-react" style="color: #61dafb;"></i> Web Dev
+                    <i class="devicon-django-plain colored"></i> Django //
+                    <i class="devicon-javascript-plain colored"></i> JavaScript //
+                    <i class="devicon-threejs-original colored"></i> Three.js //
+                    <i class="devicon-react-original colored"></i> Web Dev
                 </p>
             </div>
             <div class="hero-actions">
@@ -68,23 +69,54 @@
 
             <div class="experience-grid">
                 <div class="exp-sidebar">
-                    <div class="exp-role active">Technical Intern</div>
-                    <div class="exp-role">Web Developer</div>
+                    <div class="exp-role active" data-role="gdgc">Management Executive</div>
+                    <div class="exp-role" data-role="govt">Technical Intern</div>
+                    <div class="exp-role" data-role="web">Web Developer</div>
                 </div>
                 <div class="exp-main">
-                    <div class="exp-content">
+                    <!-- GDGC Content -->
+                    <div class="exp-content active" id="gdgc">
+                        <h3>GDGC (Google Developer Group) <span class="badge-working">Actively Working</span></h3>
+                        <p class="exp-date">July 2025 — Present</p>
+                        <p class="exp-desc">I manage operational strategy, event planning, and team coordination to
+                            ensure smooth execution of technical initiatives and community-driven programs.</p>
+                        <ul class="exp-bullets">
+                            <li>Coordinated end-to-end execution of flagship events including hackathons, workshops, and
+                                technical sessions.</li>
+                            <li>Managed budgeting, sponsorship outreach, and vendor communications to ensure efficient
+                                resource utilization.</li>
+                            <li>Collaborated closely with technical and design teams to align event goals with community
+                                impact.</li>
+                            <li>Streamlined internal workflows, documentation, and reporting processes to improve
+                                operational efficiency.</li>
+                            <li>Supervised logistics, registrations, and on-ground execution to deliver seamless
+                                participant experiences.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Govt Poly Content -->
+                    <div class="exp-content" id="govt">
                         <h3>Govt Poly Nashik <span class="badge-working">Actively Working</span></h3>
                         <p class="exp-date">Jan 2025 — Present</p>
-                        <p class="exp-desc">I develop modern web applications with focus on administrative efficiency
-                            and user engagement.</p>
+                        <p class="exp-desc">Engineering resilient digital infrastructure for public service systems and
+                            optimizing administrative workflows.</p>
                         <ul class="exp-bullets">
-                            <li>Optimizing backend workflows with Django and RESTful architectures.</li>
-                            <li>Leading the transition to modern frontend paradigms for internal government portals.
-                            </li>
-                            <li>Ensuring data integrity and system reliability across digital infrastructures.</li>
                             <li>Developing high-performance administrative portals with Django.</li>
                             <li>Leading UI/UX transitions for internal government applications.</li>
                             <li>Ensuring website reliability and data security for critical systems.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Web Dev Content -->
+                    <div class="exp-content" id="web">
+                        <h3>Freelance / Personal projects</h3>
+                        <p class="exp-date">2024 — 2025</p>
+                        <p class="exp-desc">Developing bespoke digital solutions with focus on performance and visual
+                            architecture.</p>
+                        <ul class="exp-bullets">
+                            <li>Built interactive 3D visualizations using Three.js and GLSL.</li>
+                            <li>Architected full-stack applications with Django and PostgreSQL.</li>
+                            <li>Implemented responsive motion-first design systems.</li>
                         </ul>
                     </div>
                 </div>
@@ -105,15 +137,13 @@
                 <div class="project-details">
                     <h3>GyanGanj // Matrix</h3>
                     <div class="tech-stack">
-                        <span class="tech-pill tech-python"><i class="fab fa-python" style="color: #3776ab;"></i>
-                            Python</span>
-                        <span class="tech-pill tech-js"><i class="fab fa-js" style="color: #f7df1e;"></i>
+                        <span class="tech-pill tech-python"><i class="devicon-python-plain colored"></i> Python</span>
+                        <span class="tech-pill tech-js"><i class="devicon-javascript-plain colored"></i>
                             JavaScript</span>
-                        <span class="tech-pill tech-three"><i class="fas fa-cube"></i> Three.js</span>
-                        <span class="tech-pill tech-supabase"><i class="fas fa-bolt" style="color: #3ecf8e;"></i>
+                        <span class="tech-pill tech-three"><i class="devicon-threejs-original"></i> Three.js</span>
+                        <span class="tech-pill tech-supabase"><i class="devicon-supabase-plain colored"></i>
                             Supabase</span>
-                        <span class="tech-pill tech-react"><i class="fab fa-react" style="color: #61dafb;"></i>
-                            React</span>
+                        <span class="tech-pill tech-react"><i class="devicon-react-original colored"></i> React</span>
                     </div>
                     <p class="project-desc">
                         Explore bite-sized educational insights in a high-density experience. Discover, save, and share
@@ -135,14 +165,12 @@
                 <div class="project-details">
                     <h3>CompeteSphere // 02</h3>
                     <div class="tech-stack">
-                        <span class="tech-pill tech-python"><i class="fab fa-python" style="color: #3776ab;"></i>
-                            Django</span>
-                        <span class="tech-pill tech-tailwind"><i class="fab fa-css3-alt" style="color: #06b6d4;"></i>
+                        <span class="tech-pill tech-python"><i class="devicon-django-plain colored"></i> Django</span>
+                        <span class="tech-pill tech-tailwind"><i class="devicon-tailwindcss-original colored"></i>
                             TailwindCSS</span>
-                        <span class="tech-pill tech-js"><i class="fab fa-js" style="color: #f7df1e;"></i>
+                        <span class="tech-pill tech-js"><i class="devicon-typescript-plain colored"></i>
                             TypeScript</span>
-                        <span class="tech-pill tech-react"><i class="fab fa-react" style="color: #61dafb;"></i>
-                            React</span>
+                        <span class="tech-pill tech-react"><i class="devicon-react-original colored"></i> React</span>
                     </div>
                     <p class="project-desc">
                         The definitive hub for student connectivity and competitive programming management. Simplifies

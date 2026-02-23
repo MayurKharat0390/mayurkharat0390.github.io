@@ -98,10 +98,23 @@ class SpatialScene {
     setupInteractions() {
         // Experience Tabs
         const roles = document.querySelectorAll('.exp-role');
+        const contents = document.querySelectorAll('.exp-content');
+
         roles.forEach(role => {
             role.addEventListener('click', () => {
+                const target = role.getAttribute('data-role');
+
+                // Toggle Roles
                 roles.forEach(r => r.classList.remove('active'));
                 role.classList.add('active');
+
+                // Toggle Contents
+                contents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === target) {
+                        content.classList.add('active');
+                    }
+                });
             });
         });
 
