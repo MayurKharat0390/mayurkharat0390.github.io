@@ -339,6 +339,19 @@ body.light-mode .btn-primary:hover {
     box-shadow: 0 0 30px rgba(0, 242, 255, 0.3);
 }
 
+.exp-header-top {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 2px;
+}
+
+.exp-logo {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+}
+
 .exp-title-group h3 {
     font-size: 24px;
     margin: 0;
