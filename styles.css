@@ -36,6 +36,13 @@ body {
     overflow-x: hidden;
     line-height: 1.6;
     scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
 }
 
 /* Scroll Animations */
@@ -141,6 +148,63 @@ body {
     font-size: 26px;
     color: var(--fg-dim);
     font-weight: 300;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 20px;
+    margin-top: 50px;
+}
+
+.btn-primary {
+    background: var(--fg);
+    color: var(--bg);
+    padding: 16px 45px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(255, 255, 255, 0.2);
+    filter: brightness(1.1);
+}
+
+.btn-outline {
+    background: var(--glass);
+    color: var(--fg);
+    border: 1px solid var(--border);
+    padding: 16px 45px;
+    border-radius: 100px;
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-outline:hover {
+    background: var(--fg);
+    color: var(--bg);
+    transform: translateY(-5px);
+    border-color: transparent;
+}
+
+body.light-mode .btn-primary {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .btn-primary:hover {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* Experience Tiles */
