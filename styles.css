@@ -459,70 +459,126 @@ body.light-mode .btn-primary:hover {
 
 .project-mockup {
     position: relative;
-    padding: 0;
-    background: none;
-    border: none;
+    perspective: 1000px;
+    z-index: 1;
 }
 
 .project-mockup img {
     width: 100%;
     border-radius: var(--radius);
-    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.4);
-    filter: brightness(0.9);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.8s ease;
+    filter: brightness(0.8);
+}
+
+.project-v2:hover .project-mockup img {
+    transform: rotateY(-10deg) rotateX(5deg) scale(1.02);
+    box-shadow: 20px 40px 80px rgba(0, 0, 0, 0.6);
+    filter: brightness(1);
+}
+
+.project-v2.reverse:hover .project-mockup img {
+    transform: rotateY(10deg) rotateX(5deg) scale(1.02);
+}
+
+.project-details {
+    position: relative;
+    z-index: 2;
 }
 
 .project-details h3 {
-    font-size: 3.5rem;
-    margin-bottom: 30px;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    margin-bottom: 25px;
     line-height: 1;
+    font-weight: 800;
+    letter-spacing: -2px;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 35px;
 }
 
 .tech-pill {
     padding: 10px 22px;
-    border-radius: 50px;
+    border-radius: 100px;
     font-size: 13px;
     display: flex;
     align-items: center;
-    gap: 12px;
-    font-weight: 600;
-    color: #111;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-    transition: all 0.3s ease;
-    border: 1px solid transparent;
+    gap: 10px;
+    font-weight: 700;
+    color: #000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .tech-pill:hover {
-    transform: translateY(-3px);
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    z-index: 5;
+}
+
+.tech-pill i {
+    font-size: 16px;
 }
 
 .tech-python {
-    background: #fdfae5;
-    border-color: #f2eab7;
+    background: #f0f7ff;
+    border-color: #3776ab;
 }
 
 .tech-js {
-    background: #fffbe6;
-    border-color: #f7e7a3;
+    background: #fffdf0;
+    border-color: #f7df1e;
 }
 
 .tech-three {
-    background: #f3f3f3;
-    border-color: #e5e5e5;
+    background: #f8f8f8;
+    border-color: #000;
 }
 
 .tech-supabase {
-    background: #ecfdf5;
-    border-color: #a7f3d0;
+    background: #f0fff4;
+    border-color: #3ecf8e;
 }
 
 .tech-react {
-    background: #eff6ff;
-    border-color: #bfdbfe;
+    background: #f0fcff;
+    border-color: #61dafb;
 }
 
 .tech-tailwind {
-    background: #ecfeff;
-    border-color: #a5f3fc;
+    background: #f0fdff;
+    border-color: #06b6d4;
+}
+
+.project-details::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 150px;
+    height: 150px;
+    background: var(--accent);
+    filter: blur(120px);
+    opacity: 0.15;
+    z-index: -1;
+}
+
+.tech-stack .tech-pill:nth-child(even) {
+    transform: translateY(4px);
+}
+
+.tech-stack .tech-pill:nth-child(3n) {
+    transform: translateY(-4px);
+}
+
+.tech-pill:hover {
+    transform: translateY(-12px) scale(1.1) !important;
 }
 
 .project-desc {
