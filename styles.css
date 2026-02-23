@@ -4,7 +4,8 @@
     --fg-dim: #94a3b8;
     --accent: #00f2ff;
     --nav-bg: rgba(10, 10, 10, 0.85);
-    --border: rgba(255, 255, 255, 0.1);
+    --border: rgba(255, 255, 255, 0.05);
+    /* Subtled from 0.1 */
     --card-bg: rgba(255, 255, 255, 0.03);
     --font-heading: 'Outfit', sans-serif;
     --shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
@@ -17,7 +18,8 @@ body.light-mode {
     --fg-dim: #64748b;
     --accent: #6366f1;
     --nav-bg: rgba(255, 255, 255, 0.85);
-    --border: rgba(0, 0, 0, 0.08);
+    --border: rgba(0, 0, 0, 0.04);
+    /* Subtled from 0.08 */
     --card-bg: rgba(255, 255, 255, 0.5);
     --shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
 }
@@ -76,7 +78,8 @@ a {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 1400px;
+    /* Widened from 1200px */
     margin: 0 auto;
     padding: 0 60px;
 }
