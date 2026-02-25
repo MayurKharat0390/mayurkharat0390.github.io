@@ -626,6 +626,26 @@ body.light-mode .btn-primary:hover {
     border-color: #06b6d4;
 }
 
+.tech-django {
+    background: #f0fff4;
+    border-color: #092e20;
+}
+
+.tech-sqlite {
+    background: #f0f7ff;
+    border-color: #003b57;
+}
+
+.tech-figma {
+    background: #fff5f0;
+    border-color: #f24e1e;
+}
+
+.tech-api {
+    background: #f8f0ff;
+    border-color: #9333ea;
+}
+
 .project-details::before {
     content: '';
     position: absolute;
