@@ -37,6 +37,9 @@ class SpatialScene {
         window.addEventListener('mousemove', (e) => this.onMouseMove(e));
         window.addEventListener('scroll', () => this.onScroll());
 
+        this.lastScrollY = window.scrollY;
+        this.nav = document.querySelector('.top-nav');
+
         this.onScroll(); // initial set
         this.animate();
     }
@@ -44,6 +47,22 @@ class SpatialScene {
     onScroll() {
         const scrollY = window.scrollY;
         const vh = window.innerHeight;
+        const totalHeight = document.documentElement.scrollHeight - vh;
+
+        // Update Progress Bar
+        const progress = (scrollY / totalHeight) * 100;
+        const progressBar = document.getElementById('scroll-progress');
+        if (progressBar) progressBar.style.width = progress + '%';
+
+        // Hide/Show Nav
+        if (this.nav) {
+            if (scrollY > this.lastScrollY && scrollY > 100) {
+                this.nav.classList.add('nav-hidden');
+            } else {
+                this.nav.classList.remove('nav-hidden');
+            }
+        }
+        this.lastScrollY = scrollY;
 
         // Define color changes based on scroll position
         let targetHex = 0x00ffcc; // Default (Cyan)
@@ -235,11 +254,53 @@ class SpatialScene {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initPreloader();
     new SpatialScene();
     initTypingEffect();
     initCustomCursor();
     initProjectTilt();
+    initMagneticButtons();
 });
+
+function initPreloader() {
+    const loader = document.getElementById('loader');
+    const bar = document.querySelector('.loader-bar-fill');
+    const percentage = document.querySelector('.loader-percentage');
+    if (!loader || !bar || !percentage) return;
+
+    let progress = 0;
+    const interval = setInterval(() => {
+        progress += Math.random() * 15;
+        if (progress >= 100) {
+            progress = 100;
+            clearInterval(interval);
+            setTimeout(() => {
+                loader.classList.add('fade-out');
+                document.body.classList.remove('loading');
+            }, 500);
+        }
+        bar.style.width = progress + '%';
+        percentage.textContent = Math.floor(progress) + '%';
+    }, 100);
+}
+
+function initMagneticButtons() {
+    const buttons = document.querySelectorAll('.btn-primary, .btn-outline, .btn-icon, .btn-project, .theme-toggle');
+
+    buttons.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = `translate(0px, 0px)`;
+        });
+    });
+}
 
 function initCustomCursor() {
     const dot = document.getElementById('cursor-dot');

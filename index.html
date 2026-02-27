@@ -28,7 +28,21 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body class="loading">
+    <!-- Preloader -->
+    <div id="loader">
+        <div class="loader-content">
+            <div class="loader-text">INITIALIZING</div>
+            <div class="loader-bar-bg">
+                <div class="loader-bar-fill"></div>
+            </div>
+            <div class="loader-percentage">0%</div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div id="scroll-progress"></div>
+
     <div id="canvas-wrapper">
         <canvas id="main-canvas"></canvas>
     </div>
