@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mayur Kharat // Portfolio</title>
 
+    <!-- SEO & Open Graph Tags -->
+    <meta name="description"
+        content="Mayur Kharat - Aspiring Software Developer from Pune. Specializing in Django, React, and immersive 3D Web Experiences.">
+    <meta name="keywords"
+        content="Mayur Kharat, Software Developer, Full-Stack, Django, React, Three.js, Pune, Portfolio, Web Development">
+    <meta name="author" content="Mayur Kharat">
+    <meta property="og:title" content="Mayur Kharat // Neo-Futuristic Portfolio">
+    <meta property="og:description"
+        content="Discover the portfolio of Mayur Kharat, an aspiring Software Developer building high-performance, architecturally sound web applications.">
+    <meta property="og:image" content="https://mayurkharat0390.github.io/profile-photo.jpg">
+    <meta property="og:url" content="https://mayurkharat0390.github.io/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#000000">
+
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
@@ -40,24 +55,63 @@
         <!-- Hero Section -->
         <section class="hero-v2" id="home">
             <div class="hero-inner-card">
-                <div class="availability-badge">
-                    <span class="pulse-dot"></span> Available for work!
+                <div class="hero-content-wrapper">
+                    <div class="hero-text-content">
+                        <div class="availability-badge">
+                            <span class="pulse-dot"></span> Available for work!
+                        </div>
+                        <h1>Hi, I'm <br><span class="gradient-text">Mayur Kharat</span></h1>
+                        <div class="hero-subtitle">
+                            <div class="typing-container">
+                                <span id="typing-text"></span><span class="typing-cursor"></span>
+                            </div>
+                            <p class="location-text"><i class="fas fa-location-dot"></i> Based in Pune, Maharashtra</p>
+                        </div>
+                        <div class="hero-actions">
+                            <a href="Resume.pdf" class="btn-primary" target="_blank">
+                                <i class="fas fa-arrow-up-right-from-square"></i> Resume
+                            </a>
+                            <a href="https://www.linkedin.com/in/mayur-kharat2006" target="_blank" class="btn-outline">
+                                <i class="fab fa-linkedin"></i> LinkedIn
+                            </a>
+                            <a href="https://github.com/MayurKharat0390" target="_blank" class="btn-icon">
+                                <i class="fab fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual">
+                        <div class="avatar-wrapper">
+                            <div class="avatar-glow"></div>
+                            <img src="profile-photo.jpg" alt="Mayur Kharat">
+                            <div class="floating-icon icon-1"><i class="devicon-django-plain colored"></i></div>
+                            <div class="floating-icon icon-2"><i class="devicon-react-original colored"></i></div>
+                            <div class="floating-icon icon-3"><i class="devicon-threejs-original colored"></i></div>
+                            <div class="floating-icon icon-4"><i class="devicon-javascript-plain colored"></i></div>
+                        </div>
+                    </div>
                 </div>
-                <h1>Hello I'm Mayur Kharat!</h1>
-                <div class="hero-subtitle">
-                    <p><strong>Aspiring Software Developer</strong> from Pune, Maharashtra.</p>
-                    <p class="specialist">
-                        <i class="devicon-django-plain colored"></i> Django //
-                        <i class="devicon-javascript-plain colored"></i> JavaScript //
-                        <i class="devicon-threejs-original colored"></i> Three.js //
-                        <i class="devicon-react-original colored"></i> Web Dev
-                    </p>
-                </div>
-                <div class="hero-actions">
-                    <a href="resume.pdf" class="btn-primary" target="_blank">Resume</a>
-                    <a href="https://www.linkedin.com/in/mayur-kharat2006" target="_blank" class="btn-outline">
-                        <i class="fab fa-linkedin"></i> LinkedIn
-                    </a>
+
+                <div class="hero-tech-marquee">
+                    <div class="marquee-content">
+                        <span><i class="devicon-django-plain colored"></i> Django</span>
+                        <span><i class="devicon-react-original colored"></i> React</span>
+                        <span><i class="devicon-threejs-original colored"></i> Three.js</span>
+                        <span><i class="devicon-python-plain colored"></i> Python</span>
+                        <span><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+                        <span><i class="devicon-typescript-plain colored"></i> TypeScript</span>
+                        <span><i class="devicon-html5-plain colored"></i> HTML5</span>
+                        <span><i class="devicon-css3-plain colored"></i> CSS3</span>
+                        <!-- Duplicate for infinite scroll -->
+                        <span><i class="devicon-django-plain colored"></i> Django</span>
+                        <span><i class="devicon-react-original colored"></i> React</span>
+                        <span><i class="devicon-threejs-original colored"></i> Three.js</span>
+                        <span><i class="devicon-python-plain colored"></i> Python</span>
+                        <span><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+                        <span><i class="devicon-typescript-plain colored"></i> TypeScript</span>
+                        <span><i class="devicon-html5-plain colored"></i> HTML5</span>
+                        <span><i class="devicon-css3-plain colored"></i> CSS3</span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -314,6 +368,9 @@
             <p>&copy; 2026 Designed with 🦄 and Made with ❤️ by Mayur Kharat.</p>
         </div>
     </footer>
+
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
 
     <script type="module" src="script.js"></script>
 </body>
