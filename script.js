@@ -147,7 +147,7 @@ class SpatialScene {
             });
         }, options);
 
-        document.querySelectorAll('section, .project-v2, .exp-item').forEach(el => {
+        document.querySelectorAll('section, .project-v2, .exp-item, .stagger-reveal').forEach(el => {
             el.classList.add('reveal-on-scroll');
             observer.observe(el);
         });
@@ -260,6 +260,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initCustomCursor();
     initProjectTilt();
     initMagneticButtons();
+    initSpotlightEffect();
+    initMagneticNav();
 });
 
 function initPreloader() {
@@ -298,6 +300,41 @@ function initMagneticButtons() {
 
         btn.addEventListener('mouseleave', () => {
             btn.style.transform = `translate(0px, 0px)`;
+        });
+    });
+}
+
+function initSpotlightEffect() {
+    const cards = document.querySelectorAll('.spotlight-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+}
+
+function initMagneticNav() {
+    const navLinks = document.querySelectorAll('.nav-container a');
+
+    navLinks.forEach(link => {
+        link.addEventListener('mousemove', (e) => {
+            const rect = link.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            link.style.transform = `translate(${x * 0.5}px, ${y * 0.5}px)`;
+            link.classList.add('hover-effect');
+        });
+
+        link.addEventListener('mouseleave', () => {
+            link.style.transform = `translate(0px, 0px)`;
+            link.classList.remove('hover-effect');
         });
     });
 }
