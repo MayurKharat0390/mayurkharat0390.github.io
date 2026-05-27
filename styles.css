@@ -1455,13 +1455,12 @@ body.light-mode .hero-tech-marquee {
         padding: 0 30px;
     }
 
-    .project-v2 {
+    .project-v2,
+    .project-v2.reverse,
+    .project-v2.wide-image,
+    .project-v2.wide-image.reverse {
         grid-template-columns: 1fr;
         gap: 60px;
-    }
-
-    .project-v2.reverse {
-        grid-template-columns: 1fr;
     }
 
     .experience-grid {
@@ -1471,5 +1470,274 @@ body.light-mode .hero-tech-marquee {
     .exp-sidebar {
         position: static;
         margin-bottom: 60px;
+    }
+}
+
+/* Premium Mobile Responsive Polish (< 768px) */
+@media (max-width: 768px) {
+    /* Premium Navigation Bar Rescale */
+    .top-nav {
+        min-width: calc(100% - 32px);
+        width: calc(100% - 32px);
+        top: 16px;
+    }
+
+    .nav-container {
+        gap: 12px;
+        padding: 0 8px;
+        justify-content: space-around;
+    }
+
+    .nav-container a {
+        font-size: 11px;
+        letter-spacing: 0.5px;
+        padding: 8px 4px;
+    }
+
+    /* Experience Section Mobile Restyling */
+    .exp-sidebar {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 12px;
+        margin-bottom: 40px;
+        padding-bottom: 8px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none; /* Hide scrollbars in Firefox */
+        -ms-overflow-style: none; /* Hide scrollbars in IE/Edge */
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .exp-sidebar::-webkit-scrollbar {
+        display: none; /* Hide scrollbars in Chrome/Safari */
+    }
+
+    .exp-role {
+        padding: 12px 24px;
+        font-size: 13px;
+        margin-bottom: 0;
+        white-space: nowrap;
+        text-align: center;
+        flex: 1 0 auto;
+        scroll-snap-align: start;
+    }
+
+    .exp-main {
+        padding: 40px 20px 30px;
+        min-height: auto;
+    }
+
+    .exp-header {
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin-bottom: 30px;
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .exp-header-top {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .exp-logo {
+        height: 24px;
+        width: auto;
+    }
+
+    .exp-title-group h3 {
+        font-size: 18px;
+    }
+
+    .badge-status {
+        align-self: flex-start;
+        font-size: 10px;
+        padding: 4px 12px;
+    }
+
+    .exp-skills {
+        margin-top: 30px;
+        gap: 8px;
+    }
+
+    /* Projects Section Mobile Restyling */
+    .project-v2,
+    .project-v2.reverse,
+    .project-v2.wide-image,
+    .project-v2.wide-image.reverse {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        margin-bottom: 80px;
+    }
+
+    .project-mockup {
+        order: 1; /* Keep images strictly on top of text on mobile */
+    }
+
+    .project-details {
+        order: 2; /* Details strictly below the mockups */
+    }
+
+    .project-details h3 {
+        font-size: clamp(1.8rem, 6vw, 2.4rem);
+        margin-bottom: 16px;
+    }
+
+    .tech-stack {
+        margin-bottom: 24px;
+        gap: 8px;
+    }
+
+    /* Reset translateY offsets to prevent line overlap on wrap */
+    .tech-stack .tech-pill:nth-child(even),
+    .tech-stack .tech-pill:nth-child(3n) {
+        transform: none !important;
+    }
+
+    .tech-pill {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+
+    .tech-pill:hover {
+        transform: scale(1.05) !important;
+    }
+
+    .project-desc {
+        font-size: 15px;
+        margin-bottom: 24px;
+        line-height: 1.5;
+    }
+
+    .project-actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+    }
+
+    .btn-project {
+        padding: 12px 24px;
+        font-size: 13px;
+        letter-spacing: 1px;
+        flex: 1 1 calc(50% - 6px);
+        min-width: 130px;
+        justify-content: center;
+    }
+
+    /* Hero Section Polish */
+    .hero-v2 {
+        padding: 100px 0 40px;
+    }
+
+    .avatar-wrapper {
+        width: 240px;
+        height: 240px;
+    }
+
+    .floating-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
+    }
+
+    /* About Card Mobile Polishing */
+    .about-card {
+        padding: 24px;
+        gap: 24px;
+    }
+
+    .about-image {
+        max-width: 280px;
+    }
+
+    .about-name {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+    }
+
+    .about-bio {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    /* CTA Section Mobile Polishing */
+    .cta-card {
+        padding: 60px 20px;
+    }
+
+    .cta-content p {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+
+    .cta-content h2 {
+        font-size: 1.4rem;
+    }
+
+    /* Footer Mobile adjustments */
+    .footer-v2 {
+        padding: 40px 0 30px;
+    }
+
+    .footer-content {
+        padding-top: 24px;
+        font-size: 12px;
+    }
+}
+
+/* Very Small Mobile Screen Adjustments (< 480px) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .top-nav {
+        min-width: calc(100% - 24px);
+        width: calc(100% - 24px);
+    }
+
+    .nav-container {
+        gap: 8px;
+    }
+
+    .nav-container a {
+        font-size: 10px;
+    }
+
+    .avatar-wrapper {
+        width: 200px;
+        height: 200px;
+    }
+
+    .floating-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: 12px;
+    }
+
+    .btn-primary, 
+    .btn-outline {
+        width: 100%;
+        justify-content: center;
+        padding: 14px 24px;
+    }
+
+    .btn-icon {
+        width: 48px;
+        height: 48px;
     }
 }
