@@ -1479,49 +1479,63 @@ body.light-mode .hero-tech-marquee {
 
 /* Premium Mobile Responsive Polish (< 768px) */
 @media (max-width: 768px) {
+    /* Complete clipping to eliminate horizontal scrolls on mobile */
+    section {
+        overflow: hidden !important;
+    }
+
+    #canvas-wrapper,
+    #main-canvas {
+        width: 100vw !important;
+        overflow: hidden !important;
+    }
+
     /* Premium Navigation Bar Rescale */
     .top-nav {
-        min-width: calc(100% - 24px);
-        width: calc(100% - 24px);
+        min-width: 0 !important;
+        width: calc(100% - 24px) !important;
+        max-width: calc(100% - 24px) !important;
         top: 12px;
         padding: 4px 8px;
+        box-sizing: border-box;
     }
 
     .nav-container {
-        gap: 8px;
-        padding: 0 4px;
-        justify-content: space-between;
+        gap: 4px;
+        padding: 0;
+        justify-content: space-around;
     }
 
     .nav-container a {
         font-size: 10px;
         letter-spacing: 0;
-        padding: 6px 4px;
+        padding: 6px 3px;
     }
 
     .theme-toggle {
-        gap: 6px;
-        padding: 4px;
+        gap: 4px;
+        padding: 2px;
+    }
+
+    .theme-toggle i {
+        display: none !important; /* Hide moon/sun icons on mobile to reclaim critical width */
     }
 
     .toggle-track {
-        width: 32px;
-        height: 16px;
+        width: 28px;
+        height: 14px;
+        margin: 0 4px;
     }
 
     .toggle-thumb {
-        width: 10px;
-        height: 10px;
+        width: 8px;
+        height: 8px;
         top: 3px;
         left: 3px;
     }
 
     body.light-mode .toggle-thumb {
-        transform: translateX(16px);
-    }
-
-    .theme-toggle i {
-        font-size: 11px;
+        transform: translateX(14px);
     }
 
     /* Experience Section Mobile Restyling */
@@ -1727,19 +1741,22 @@ body.light-mode .hero-tech-marquee {
 @media (max-width: 480px) {
     .container {
         padding: 0 16px;
+        overflow-x: hidden;
     }
 
     .top-nav {
-        min-width: calc(100% - 16px);
-        width: calc(100% - 16px);
+        min-width: 0 !important;
+        width: calc(100% - 16px) !important;
+        max-width: calc(100% - 16px) !important;
     }
 
     .nav-container {
-        gap: 4px;
+        gap: 2px;
+        padding: 0;
     }
 
     .nav-container a {
-        font-size: 9.5px;
+        font-size: 9px;
         padding: 4px 2px;
     }
 
